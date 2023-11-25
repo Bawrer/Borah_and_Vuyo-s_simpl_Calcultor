@@ -48,7 +48,6 @@
 	font-size: 1.25rem;
 	margin-bottom: 0.5rem;
 }
-
 .display .output {
 	font-size: 3rem;
 	font-weight: 700;
@@ -62,7 +61,7 @@
 
 .display .brackets,
 .display .percent {
-	color: #26FED7;
+	color: #ff08ea;
 }
 
 .keys {
@@ -73,7 +72,7 @@
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 	grid-gap: 1rem;
-	box-shadow: 0px -2px 16px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px -2px 16px rgba(119, 70, 70, 0.2);
 }
 
 .keys .key {
@@ -83,8 +82,8 @@
 	display: block;
 	height: 0;
 	padding-top: 100%;
-	background-color: #262933;
-	border-radius: 1rem;
+	background-color: #c8cee2;
+	border-radius: 3rem;
 	transition: 0.2s;
 	user-select: none;
 }
@@ -109,5 +108,5 @@
 }
 
 .keys .key.action span {
-	color: #26FED7;
+	color: #ee0da3;
 }
