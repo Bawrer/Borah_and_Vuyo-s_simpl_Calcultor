@@ -82,7 +82,7 @@
 	display: block;
 	height: 0;
 	padding-top: 100%;
-	background-color: #c8cee2;
+	background-color: #83288f;
 	border-radius: 3rem;
 	transition: 0.2s;
 	user-select: none;
@@ -100,11 +100,11 @@
 }
 
 .keys .key:hover {
-	box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0px 0px 8px rgba(98, 233, 150, 0.2);
 }
 
 .keys .key.operator span {
-	color: #EB6666;
+	color: #71eb66;
 }
 
 .keys .key.action span {
