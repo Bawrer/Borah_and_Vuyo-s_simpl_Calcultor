@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const inputElement = document.querySelector('.input');
-    const outputElement = document.querySelector('.output');
+   const inputElement = document.querySelector('.input');
+   const outputElement = document.querySelector('.output');
+   let firstNumber = '';
+   let currentOperator = '';
 
-    document.querySelector('.keys').addEventListener('click', function (event) {
+   document.querySelector('.keys').addEventListener('click', function (event) {
        const target = event.target.closest('.key');
        if (!target) return;
 
@@ -10,22 +12,48 @@ document.addEventListener('DOMContentLoaded', function () {
        const keyText = target.innerText;
 
        if (keyType === 'clear') {
-          inputElement.innerText = '';
-          outputElement.innerText = '';
+           inputElement.innerText = '';
+           outputElement.innerText = '';
+           firstNumber = '';
+           currentOperator = '';
        } else if (keyType === '=') {
-          try {
-             const result = eval(inputElement.innerText);
-             outputElement.innerText = result;
-          } catch (error) {
-             outputElement.innerText = 'Error';
-          }
+           try {
+               const secondNumber = parseFloat(inputElement.innerText);
+               let result;
+
+               if (currentOperator === '+') {
+                   result = parseFloat(firstNumber) + secondNumber;
+               } else if (currentOperator === '-') {
+                   result = parseFloat(firstNumber) - secondNumber;
+               } else if (currentOperator === '*') {
+                   result = parseFloat(firstNumber) * secondNumber;
+               } else if (currentOperator === '/') {
+                   result = parseFloat(firstNumber) / secondNumber;
+               } else if (currentOperator === '%') {
+                   result = (parseFloat(firstNumber) * secondNumber) / 100;
+               } else {
+                   outputElement.innerText = 'Error';
+                   return;
+               }
+
+               outputElement.innerText = result;
+               firstNumber = '';
+               currentOperator = '';
+           } catch (error) {
+               outputElement.innerText = 'Error';
+           }
+       } else if (keyType === 'percentage') {
+           // Save the first number for percentage calculation
+           firstNumber = inputElement.innerText;
+           currentOperator = '%';
+           inputElement.innerText = '';
+       } else if (keyType === '*' || keyType === '/' || keyType === '+' || keyType === '-') {
+           // Save the current operator
+           currentOperator = keyType;
+           firstNumber = inputElement.innerText;
+           inputElement.innerText = '';
        } else {
-          // Handle multiplication separately
-          if (keyType === '*') {
-             inputElement.innerText += '*';
-          } else {
-             inputElement.innerText += keyText;
-          }
+           inputElement.innerText += keyText;
        }
-    });
- });
+   });
+});
